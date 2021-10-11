@@ -1,0 +1,40 @@
+    <div class=" mt-5" style="width: 100%;">
+    <div class="mr-5" style="margin-left: 5%; font-weight: bold;font-size: larger;">
+      <label class="font-weight-bold;font-size:large">Total Outstanding <label class="text-warning" style="margin-right: 200px;">: Rs {{responseData?.totalOutstandingAmount}} /-</label></label>
+      <label class="font-weight-bold">Last Updated <label class="text-warning">: 03-Oct-2021</label></label>
+    </div>
+<mat-divider></mat-divider>
+
+<div class="mt-5 mr-5" style="margin-left: 5%;">
+  <table class="table table-striped">
+    <thead>
+      <tr class=" bg-dark" style="color: rgb(247, 242, 241);">
+        <th scope="col" class="border border-success">Sr.no</th>
+        <th scope="col" class="border border-success">Date</th>
+        <th scope="col" class="border border-success">Place</th>
+        <th scope="col" class="border border-success">Amount</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transactionDetails of responseData['unbilledTxn'];let indexOfelement=index;" class="text-dark border border-dark">
+        <th class="border border-dark">{{indexOfelement+1}}</th>
+        <td class="border border-dark">{{this.datePipe.transform(transactionDetails.date_time,"dd MMM yyyy")}}</td>
+        <td class="border border-dark">{{transactionDetails.merchant_name}}</td>
+        <td class="border border-dark">Rs.{{transactionDetails.expenditure}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!--   <nav aria-label="Page navigation example" style="margin-left: 70%;">-->
+<!--    <ul class="pagination">-->
+<!--      <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+<!--      <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--      <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--      <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+<!--    </ul>-->
+<!--  </nav>-->

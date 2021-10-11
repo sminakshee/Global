@@ -1,0 +1,69 @@
+
+<mat-tab-group *ngIf=showStatementTabs>
+  <mat-tab label="Unbilled Txn"> <app-unbilled-txn></app-unbilled-txn> </mat-tab>
+  <mat-tab label="Last Statement"> <app-last-statement></app-last-statement></mat-tab>
+</mat-tab-group>
+
+
+  <div *ngIf=!showStatementTabs class="mt-1 " style="width: 100%; ">
+    <div >
+      <div class="float-right mr-3 mt-1">
+  <label class="font-weight-bold">Last Statement <label class="text-warning">: {{responseData?.cardlimit?.laststatementdate}}</label></label>
+ <br> <label class="font-weight-bold" style="padding-left: 10px">Pmt Due Date <label class="text-warning">: {{responseData?.cardlimit?.paymentduedate}}</label></label>
+</div>
+
+
+
+
+      <div class="d-flex justify-content-center container text-white ">
+        <div class="card p-2 px-3 py-3  " style="background-color: rgb(14, 14, 63); width: 30%;">
+          <div class="d-flex justify-content-between align-items-center">
+            <img
+              src="https://i.imgur.com/8ANWXql.png"
+              width="20"
+              height="20"
+            /><img src="https://i.imgur.com/SsTSozr.png" width="40" />
+          </div>
+          <div class="mt-1">
+            <span>Credit Card</span><br>
+            {{responseData?.cardetails?.card_number}}
+          </div>
+          <div class="d-flex justify-content-between card-details mt-3 mb-3">
+            <div class="d-flex flex-column">
+              <span class="light">{{responseData?.cardetails?.card_holder_name}}</span><span></span>
+            </div>
+            <div class="d-flex flex-row">
+              <div class="d-flex flex-column mr-3">
+<!--                <button mat-button (click)="openDialog()">Open dialog box</button>-->
+                <button type="button" class="btn btn-success" (click)="openDialog()">CVV/EXP Date</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div></div>
+    <div class=" mt-5" style="width: 800px; background-color: whitesmoke;margin-left: 150px;">
+
+<table class="table table-bordered ">
+  <tbody>
+    <tr>
+      <td>Total Outstanding  <label style="color: rgb(9, 9, 61)"> :Rs {{responseData?.totaloutstanding}}</label><button type="button" routerLink="/payment"  [state]="{ totalAmount:responseData?.totaloutstanding }"  class="btn btn-success ml-4">Pay</button></td>
+      <td>Reward Points  <label style="color: rgb(9, 9, 61)"> :{{responseData?.cardlimit?.rewardpoints}}</label></td>
+    </tr>
+    <tr>
+      <td>Total Cr Limit  <label  style="color: rgb(9, 9, 61)"> :Rs {{responseData?.cardlimit?.totalcreditlimit}}</label></td>
+      <td>Avail. Cr Limit  <label  style="color: rgb(9, 9, 61)"> :{{responseData?.cardlimit?.availablecreditlimit}}</label> </td>
+    </tr>
+    <tr>
+      <td >Total Cash Limit  <label  style="color: rgb(9, 9, 61)"> :Rs {{responseData?.cardlimit?.totalcashlimit}}</label></td>
+      <td>Avail. Cash Limit  <label  style="color: rgb(9, 9, 61)"> :Rs {{responseData?.cardlimit?.availablecashlimit}}</label></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+<div class="p-2 text-center "  style="margin-left:50px">
+<button type="button" class="btn btn-success w-22" (click)="openStatement()"  >View Statement</button>
+</div>
+</div>
+

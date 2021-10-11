@@ -1,0 +1,30 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <h2>Slytherin </h2>
+  </div>
+  <mat-divider></mat-divider>
+<!--  <h2 matSubheader class="mt-2">APPLICATIONS</h2>-->
+  <br>
+
+
+
+  <a mat-list-item routerLinkActive="list-item-active" *ngIf=isMerchantLogin routerLink="/merchant-dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" *ngIf=isMerchantLogin routerLink="/merchant-transaction">
+    <mat-icon >view_list </mat-icon> Transaction
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" *ngIf=!isMerchantLogin routerLink="/cust-transaction">
+    <mat-icon >view_list </mat-icon> Transaction
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" *ngIf=!isMerchantLogin routerLink="/details">
+    <mat-icon>dashboard</mat-icon> Saved Details
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" *ngIf=!isMerchantLogin routerLink="/save-addresses">
+    <mat-icon>dashboard</mat-icon> Addresses
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" *ngIf=!isMerchantLogin routerLink="/profile">
+    <mat-icon>portrait </mat-icon> Profile
+  </a>
+</mat-nav-list>
+
